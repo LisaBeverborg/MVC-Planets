@@ -10,13 +10,22 @@ class View {
         this.container.appendChild(this.heading);  
     }
     
-    //displayPlanets(planets){ 
-    // planets.forEach(planet =>{
-    //    this.p = document.createElement("p")
-    //  this.container.append(this.p) 
-    //  console.log(planets)
-    // })
-    // }
-}
+    displayPlanets(){ 
 
-let planetView = new View();
+      /*  //let planetsList = this.allPlanets.slice(0, 4);
+        let planetsList = planets.slice(0, 4);
+        return planetsList
+        console.log(planets)
+    
+    */
+    }
+    
+    // planets.forEach(planet =>{
+        //    this.p = document.createElement("p")
+        //  this.container.append(this.p) 
+        //  console.log(planets)
+        // })
+        // }
+    }
+    
+    let planetView = new View();

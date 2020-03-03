@@ -4,17 +4,31 @@ class Controller {
     this.view = view
     //console.log("new Controller")
     
-    this.result = this.model.getAllPlanets()
-   // this.view.displayPlanets(this.result)
+    this.resultAll = this.model.getAllPlanets()
+    this.resultClosest = this.model.closestPlanets()
+    
+    this.view.displayAllPlanets(this.resultAll)
+    this.view.displayFourClosest(this.resultClosest)
     //this.type = this.model.filterType()
+
+    //this.result = this.model.closestPlanets()
+    //this.view.displayPlanets(this.result)
+  }
+  /*showFourClosestPlanets = (name) => {
+    this.view.displayPlanets(this.result)
   }
   
-  //planetName = (name) => {
-    
-   // this.model.closestPlanets(name)
-   // this.view.displayPlanets(this.result)
- // }
+  */
 }
+
+
+
+  //planetName = (name) => {
+  
+  // this.model.closestPlanets(name)
+  // this.view.displayPlanets(this.result)
+  // }
+
 
 
 
