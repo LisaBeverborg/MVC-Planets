@@ -108,17 +108,37 @@ class Model {
         ]
         console.log(this.allPlanets)
     }
+
+//let orderedList = getAllPlanets.....? put function in variable to use in closest planets function
+
     getAllPlanets(){
         this.allPlanets.sort(function (a, b) {
             return a.order - b.order;
         });    
     }  
     closestPlanets(planets){
-        this.allPlanets.slice(0, 3);
-        
-        //console.log()
+        //let planetsList = this.allPlanets.slice(0, 4);
+        let planetsList = getAllPlanets.slice(0, 4);
+        return planetsList
     }
+    
+    //filterType(type){
+        //  let i=0
+        //typePlanets = []
+        // while (i < this.allPlanets.length){
+            //   let j=1
+            // if (type[i] == "Star"){
+    //     newArray.push("Star" [j] )
+    //   }
+    //   i++
+    //}       
+    //  return typePlanets
+    
+    //}   
+    
 }
 
 let planetModel = new Model();
 
+//closestPlanets(getAllPlanets)
+console.log(planetModel.closestPlanets())

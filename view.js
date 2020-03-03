@@ -10,16 +10,13 @@ class View {
         this.container.appendChild(this.heading);  
     }
     
-    displayPlanets(planets){ 
-        planets.forEach(planet =>{
-            this.p = document.createElement("p")
-            this.p.innerHTML = planet.name
-            this.container.append(this.p) 
-            console.log(planet)
-        })
-
-
-    }
+    //displayPlanets(planets){ 
+    // planets.forEach(planet =>{
+    //    this.p = document.createElement("p")
+    //  this.container.append(this.p) 
+    //  console.log(planets)
+    // })
+    // }
 }
 
 let planetView = new View();

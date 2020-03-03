@@ -5,15 +5,15 @@ class Controller {
     //console.log("new Controller")
     
     this.result = this.model.getAllPlanets()
-    this.resultPlanets = this.model.closestPlanets()
-    this.view.displayPlanets(this.result)
+   // this.view.displayPlanets(this.result)
+    //this.type = this.model.filterType()
   }
   
-  planetName = (name) => {
+  //planetName = (name) => {
     
-    this.model.closestPlanets(name)
-    this.view.displayPlanets(this.resultPlanets)
-  }
+   // this.model.closestPlanets(name)
+   // this.view.displayPlanets(this.result)
+ // }
 }
 
 
