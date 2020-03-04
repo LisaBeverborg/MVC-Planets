@@ -108,38 +108,48 @@ class Model {
         ]
         console.log(this.allPlanets)
     }
-
-
-
+    
+    getAllPlanets() {
+        return this.planets
+    }
+                push() {
+            
+                    this.planets.push({name, order, type, atmospheric_composition, discovery})
+                }
+    /*
     getAllPlanets(){
         this.allPlanets.sort(function (a, b) {
             return a.order - b.order;
         });    
     }  
-    closestPlanets(){
+    */
+   /* closestPlanets(){
         let planetsList = this.allPlanets.slice(0, 4);
         //let planetsList = getAllPlanets.slice(0, 4);
         return planetsList
     }
     
-   
-    //filterType(type){
-        //  let i=0
-        //typePlanets = []
-        // while (i < this.allPlanets.length){
-            //   let j=1
-            // if (type[i] == "Star"){
-    //     newArray.push("Star" [j] )
-    //   }
-    //   i++
-    //}       
-    //  return typePlanets
     
-    //}   
+    filterType(type){
+        let i=0
+        let typePlanets = []
+        while (i < this.allPlanets.length){
+            let j=1
+            if (this.allPlanets[i] == "Star"){
+                typePlanets.push("Star")
+            }
+            i++
+        }       
+        return typePlanets
+        
+    } 
+    */
     
 }
 
 let planetModel = new Model();
 
 //closestPlanets(getAllPlanets)
-console.log(planetModel.closestPlanets())
+//console.log(planetModel.getAllPlanets())
+//console.log(planetModel.filterType())
+
