@@ -8,51 +8,34 @@ class View {
         this.heading = document.createElement("H1");
         this.heading.innerHTML = "Planets";                   
         this.container.appendChild(this.heading);  
-
+        
         this.subheading = document.createElement("H2");
         this.subheading.innerHTML = "Planets closest to the sun";                   
         this.container.appendChild(this.subheading);  
     }
     
-    closestPlanets(planets){
-        let planetsList = planets.slice(0, 4);
-        //let planetsList = getAllPlanets.slice(0, 4);
-        return planetsList
+    closestPlanets(planets){ 
+        planets.forEach(planet =>{
+            this.closestPlanetList = document.getElementById("listClosest");
+            this.pPlanet = document.createElement("p")
+            this.pPlanet.innerHTML = planet.name
+            this.closestPlanetList.append(this.pPlanet)   
+        })
     }
     
-    
-    filterType(type){
-        let i=0
-        let typePlanets = []
-        while (i < this.allPlanets.length){
-            let j=1
-            if (this.allPlanets[i] == "Star"){
-                typePlanets.push("Star")
-            }
-            i++
-        }       
-        return typePlanets
-        
-    } 
-    //displayPlanets(){ 
-        
-        /*  //let planetsList = this.allPlanets.slice(0, 4);
-        let planetsList = planets.slice(0, 4);
-        return planetsList
-        console.log(planets)
-        
+    typePlanets(types){ 
+        this.typeList = document.getElementById("listType");
+        this.headingType = document.createElement("H2");
+        this.headingType.innerHTML = "Types of planets";                   
+        this.typeList.appendChild(this.headingType);  
+        types.forEach(type =>{
+            this.planetType = document.createElement("p")
+            this.planetType.innerHTML = type.type +" " + type.amount
+            this.typeList.append(this.planetType)
+        })
     }
-    */
-   
-   // planets.forEach(planet =>{
-       //    this.p = document.createElement("p")
-       //  this.container.append(this.p) 
-       //  console.log(planets)
-       // })
-       // }
-    }
-    
-    let planetView = new View();
-    
-    console.log(planetView.closestPlanets())
-    
+}
+
+let planetView = new View();
+
+

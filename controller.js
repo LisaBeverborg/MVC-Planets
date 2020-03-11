@@ -4,35 +4,17 @@ class Controller {
     this.view = view
     //console.log("new Controller")
     
-    this.result = this.model.getAllPlanets()
+    this.result = this.model.closestPlanets()
     this.view.closestPlanets(this.result)
-    this.view.save(this.showFourClosestPlanets)
     
-    //this.model.filterType(this.result)
-    
-    //this.view.displayAllPlanets(this.resultAll)
-    //this.view.displayFourClosest(this.resultClosest)
-    //this.type = this.model.filterType()
-
-    //this.result = this.model.closestPlanets()
-    //this.view.displayPlanets(this.result)
-  }
-  showFourClosestPlanets = (name) => {
-    this.view.closestPlanets(this.result)
+    this.allTypes = this.model.typesPlanets
+    this.view.typePlanets(this.allTypes)
   }
   
-  
+  showLists = () => {
+    this.view.closestPlanets(this.result)
+    this.view.typePlanets(this.allTypes)
+  }
 }
-
-
-
-  //planetName = (name) => {
-  
-  // this.model.closestPlanets(name)
-  // this.view.displayPlanets(this.result)
-  // }
-
-
-
 
 let planetController = new Controller(planetModel, planetView);

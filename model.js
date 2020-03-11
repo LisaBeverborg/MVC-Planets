@@ -106,50 +106,61 @@ class Model {
                 "discovery": "William Herschel, 1781"
             }
         ]
-        console.log(this.allPlanets)
-    }
-    
-    getAllPlanets() {
-        return this.planets
-    }
-                push() {
-            
-                    this.planets.push({name, order, type, atmospheric_composition, discovery})
-                }
-    /*
-    getAllPlanets(){
-        this.allPlanets.sort(function (a, b) {
-            return a.order - b.order;
-        });    
-    }  
-    */
-   /* closestPlanets(){
-        let planetsList = this.allPlanets.slice(0, 4);
-        //let planetsList = getAllPlanets.slice(0, 4);
-        return planetsList
-    }
-    
-    
-    filterType(type){
-        let i=0
-        let typePlanets = []
-        while (i < this.allPlanets.length){
-            let j=1
-            if (this.allPlanets[i] == "Star"){
-                typePlanets.push("Star")
-            }
-            i++
-        }       
-        return typePlanets
         
-    } 
-    */
-    
+        this.typesPlanets = [
+            {"type": "Sun",
+            "amount": this.filterTypeStar(),
+        },
+        {
+            "type": "Gas Planet",
+            "amount": this.filterTypeGasPlanet(),   
+        },
+        {
+            "type": "Terrestrial Planet",
+            "amount": this.filterTypeTerrestrialPlanet(),
+        }
+    ]
 }
+
+getAllPlanets(){
+    this.allPlanets.sort(function (a, b) {
+        return a.order - b.order;    
+    });
+    return this.allPlanets    
+}  
+
+closestPlanets(){
+    let planetsList = this.getAllPlanets().slice(0, 4);
+    return planetsList
+}
+
+
+filterTypeStar(){
+    let typeStar = this.getAllPlanets().filter( planet => planet.type =="Star");
+    return typeStar.length //remove length to see items in the array
+}
+
+filterTypeGasPlanet(){
+    let typeGasPlanet = this.getAllPlanets().filter( planet => planet.type =="Gas planet");
+    return typeGasPlanet.length 
+}
+
+filterTypeTerrestrialPlanet(){
+    let typeTerrestrialPlanet = this.getAllPlanets().filter( planet => planet.type =="Terrestrial planet");
+    return typeTerrestrialPlanet.length 
+}
+
+}
+
 
 let planetModel = new Model();
 
-//closestPlanets(getAllPlanets)
-//console.log(planetModel.getAllPlanets())
-//console.log(planetModel.filterType())
+console.log(planetModel.getAllPlanets())
+console.log(planetModel.closestPlanets())
+console.log(planetModel.filterTypeStar())
+console.log(planetModel.filterTypeGasPlanet())
+console.log(planetModel.filterTypeTerrestrialPlanet())
+console.log(planetModel.typesPlanets)
+
+
 
