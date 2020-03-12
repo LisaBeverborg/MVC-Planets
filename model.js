@@ -107,7 +107,38 @@ class Model {
             }
         ]
         
-        this.typesPlanets = [
+    }
+    
+    getAllPlanets(){
+        this.allPlanets.sort(function (a, b) {
+            return a.order - b.order;    
+        });
+        return this.allPlanets    
+    }  
+    
+    closestPlanets(){
+        let planetsList = this.getAllPlanets().slice(1, 5);
+        return planetsList
+    }
+    
+    
+    filterTypeStar(){
+        let typeStar = this.getAllPlanets().filter( planet => planet.type =="Star");
+        return typeStar.length //remove length to see items in the array
+    }
+    
+    filterTypeGasPlanet(){
+        let typeGasPlanet = this.getAllPlanets().filter( planet => planet.type =="Gas planet");
+        return typeGasPlanet.length 
+    }
+    
+    filterTypeTerrestrialPlanet(){
+        let typeTerrestrialPlanet = this.getAllPlanets().filter( planet => planet.type =="Terrestrial planet");
+        return typeTerrestrialPlanet.length 
+    }
+    
+    typesPlanets(){
+        this.typesPlanetsfilter = [
             {"type": "Sun",
             "amount": this.filterTypeStar(),
         },
@@ -119,39 +150,38 @@ class Model {
             "type": "Terrestrial Planet",
             "amount": this.filterTypeTerrestrialPlanet(),
         }
-    ]
+    ]  
+    return this.typesPlanetsfilter
 }
 
-getAllPlanets(){
-    this.allPlanets.sort(function (a, b) {
-        return a.order - b.order;    
-    });
-    return this.allPlanets    
-}  
-
-closestPlanets(){
-    let planetsList = this.getAllPlanets().slice(0, 4);
-    return planetsList
+findAtmosphericComposition() {
+    let composition = {}
+    let sortedComposition
+    for (let i = 0; i < this.getAllPlanets().length; i++) {
+        this.getAllPlanets()[i].atmospheric_composition.forEach((element) => {
+            
+            if (composition.hasOwnProperty(element)) {
+                composition[element] ++
+            } else {
+                composition[element] = 1
+            } 
+        })
+        
+        sortedComposition = Object.entries(composition).sort(function(a, b) {
+            sortedComposition = (b[1] - a[1])
+            return sortedComposition
+        })
+    }
+    return sortedComposition
 }
 
 
-filterTypeStar(){
-    let typeStar = this.getAllPlanets().filter( planet => planet.type =="Star");
-    return typeStar.length //remove length to see items in the array
+removePlanet(){
+    this.getAllPlanets().splice(1,1)
+    
+    return this.getAllPlanets()
 }
-
-filterTypeGasPlanet(){
-    let typeGasPlanet = this.getAllPlanets().filter( planet => planet.type =="Gas planet");
-    return typeGasPlanet.length 
 }
-
-filterTypeTerrestrialPlanet(){
-    let typeTerrestrialPlanet = this.getAllPlanets().filter( planet => planet.type =="Terrestrial planet");
-    return typeTerrestrialPlanet.length 
-}
-
-}
-
 
 let planetModel = new Model();
 
@@ -160,7 +190,9 @@ console.log(planetModel.closestPlanets())
 console.log(planetModel.filterTypeStar())
 console.log(planetModel.filterTypeGasPlanet())
 console.log(planetModel.filterTypeTerrestrialPlanet())
-console.log(planetModel.typesPlanets)
+console.log(planetModel.typesPlanets())
+console.log(planetModel.findAtmosphericComposition())
+//console.log(planetModel.removePlanet())
 
 
 
